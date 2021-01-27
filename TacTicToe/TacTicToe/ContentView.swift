@@ -34,7 +34,12 @@ struct Home : View {
                 ForEach(0..<9, id: \.self)
                 { index in
                     ZStack {
+                        
+                        
+                        Color.red
+                        
                         Color.blue
+                            .opacity(moves[index] ==  "" ? 1 : 0)
                         
                         Text(moves[index])
                             .font(.system(size: 55))
@@ -49,10 +54,12 @@ struct Home : View {
                     .onTapGesture(perform: {
                         withAnimation(Animation.easeIn(duration:0.5)) {
                             
+                            if moves[index] == "" {
                             moves[index] = isPlaying ? "X" : "O"
                             isPlaying.toggle()
                         }
-                    })
+                        }
+                        })
                 }
                 
             }
